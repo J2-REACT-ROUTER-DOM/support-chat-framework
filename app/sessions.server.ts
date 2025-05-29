@@ -9,7 +9,7 @@ type SessionData = {
 type SessionFlashData = {
   error: string;
 };
-
+const domain = process.env.NODE_ENV === "production" ? "reactrouter.com" : "localhost";
 const { getSession, commitSession, destroySession } =
   createCookieSessionStorage<SessionData, SessionFlashData>(
     {
@@ -19,7 +19,8 @@ const { getSession, commitSession, destroySession } =
 
         // all of these are optional
         //domain: "reactrouter.com",
-        domain: "localhost",
+        //domain: "localhost",
+        domain: domain,
         // Expires can also be set (although maxAge overrides it when used in combination).
         // Note that this method is NOT recommended as `new Date` creates only one date on each server deployment, not a dynamic date in the future!
         //
